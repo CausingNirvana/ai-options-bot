@@ -60,3 +60,4 @@ wheel==0.45.1
 yfinance==0.2.61
 joblib==1.5.1
 scikit-learn==1.6.1
+yfinance==0.2.61
