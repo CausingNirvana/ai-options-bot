@@ -69,3 +69,5 @@ matplotlib==3.10.3
 matplotlib-inline==0.1.7
 plotly==6.1.2
 streamlit==1.45.1
+yfinance==0.2.61
+mibian==0.1.3
