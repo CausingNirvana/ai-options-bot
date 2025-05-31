@@ -25,7 +25,7 @@ if not MODEL_PATH.exists():
     raise RuntimeError("Model file missing. Run: python -m src.train_lr first.")
 model = load(MODEL_PATH)
 
-app = FastAPI(title="AI Options Bot", version="0.3.0 (Live IV)")
+app = FastAPI(title="AI Options Bot", version="0.3.0 (r=4% default)")
 
 # Allowed intervals and their maximum Yahoo look-back (in days)
 ALLOWED_INTERVALS = {
@@ -215,7 +215,7 @@ def options_info(
         "1m", "2m", "5m", "15m", "30m",
         "60m", "90m", "1h", "1d", "1wk", "1mo"
     ] = Query("1d", description="Candle interval"),
-    r: float = Query(1.5, description="Risk-free rate in % (annualized)")
+    r: float = Query(4.0, description="Risk-free rate in % (annualized)")
 ):
     """
     Returns the ATM contract and Greeks for the model’s recommendation,
@@ -275,7 +275,6 @@ def options_info(
             raise RuntimeError(f"No option expiration dates found for {ticker}.")
         front_month = expiries[0]
 
-        # get last close price (today)
         hist = yf_tkr.history(period="1d")
         if hist.empty:
             raise RuntimeError(f"No price history available for {ticker}.")
@@ -283,11 +282,9 @@ def options_info(
 
         opt_chain = yf_tkr.option_chain(front_month)
         calls_df = opt_chain.calls
-        # Compute absolute distance between strike and last close, pick that row
         calls_df["dist"] = (calls_df["strike"] - last_close_price).abs()
         atm_row = calls_df.loc[calls_df["dist"].idxmin()]
 
-        # Newer yfinance versions call it "impliedVolatility"
         iv_today = float(atm_row.get("impliedVolatility", atm_row.get("impliedVol", None)))
         if iv_today is None:
             raise RuntimeError("impliedVol/impliedVolatility not found in option chain.")
@@ -321,7 +318,7 @@ def options_info(
             S=float(last["Close"]),
             K=strike,
             r=r,
-            implied_vol=iv_today * 100.0,   # extract decimal → percent for mibian
+            implied_vol=iv_today * 100.0,
             days_to_expiry=days_to_expiry,
             option_type=option_type
         )
@@ -354,8 +351,8 @@ def full_dashboard(
         "1m", "2m", "5m", "15m", "30m",
         "60m", "90m", "1h", "1d", "1wk", "1mo"
     ] = Query("1d", description="Candle interval"),
-    days: int = Query(60, gt=0, description="Look-back window, in days"),
-    r: float = Query(1.5, description="Risk-free rate in % (annualized)")
+    days: int = Query(60, gt=0, description="Look-back window, days"),
+    r: float = Query(4.0, description="Risk-free rate in % (annualized)")
 ):
     """
     Returns a single HTML page that contains:
