@@ -10,3 +10,27 @@ Done.
   today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
 Appended to iv_history_SPY.csv: 2025-06-04,0.012217
 Done.
+/Users/shayanjalilvand/ai-options-bot/scripts/update_iv_history.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
+Appended to iv_history_SPY.csv: 2025-06-05,0.046640
+Done.
+/Users/shayanjalilvand/ai-options-bot/scripts/update_iv_history.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
+Appended to iv_history_SPY.csv: 2025-06-06,0.018565
+Done.
+/Users/shayanjalilvand/ai-options-bot/scripts/update_iv_history.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
+Appended to iv_history_SPY.csv: 2025-06-09,0.011729
+Done.
+/Users/shayanjalilvand/ai-options-bot/scripts/update_iv_history.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
+Appended to iv_history_SPY.csv: 2025-06-10,0.000010
+Done.
+/Users/shayanjalilvand/ai-options-bot/scripts/update_iv_history.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
+Appended to iv_history_SPY.csv: 2025-06-13,0.068125
+Done.
+/Users/shayanjalilvand/ai-options-bot/scripts/update_iv_history.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today_str = datetime.utcnow().date().isoformat()  # YYYY-MM-DD
+Appended to iv_history_SPY.csv: 2025-06-16,0.017832
+Done.
